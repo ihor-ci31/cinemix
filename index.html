@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cinemix — Каталог фільмів та серіалів</title>
+  <meta name="description" content="Cinemix — знаходь найкращі фільми та серіали, читай відгуки та оцінюй переглянуте">
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+  <!-- Стилі -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/catalog.css">
+  <style>
+    /* Стилі специфічні для головної сторінки */
+    .hero {
+      min-height: 560px;
+      display: flex;
+      align-items: center;
+      background: linear-gradient(135deg, #0f0f1a 0%, #1a1a2e 50%, #16213e 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 70% 50%, rgba(233,69,96,0.12) 0%, transparent 60%);
+    }
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 600px;
+    }
+    .hero-badge {
+      display: inline-block;
+      background: rgba(233,69,96,0.15);
+      border: 1px solid rgba(233,69,96,0.4);
+      color: var(--clr-accent);
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 4px 14px;
+      border-radius: 20px;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .hero h1 {
+      font-family: var(--font-heading);
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 20px;
+    }
+    .hero h1 span { color: var(--clr-accent); }
+    .hero p {
+      font-size: 1.05rem;
+      color: var(--clr-muted);
+      margin-bottom: 32px;
+      line-height: 1.7;
+    }
+    .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+    .hero-stats {
+      display: flex;
+      gap: 40px;
+      margin-top: 48px;
+      padding-top: 32px;
+      border-top: 1px solid var(--clr-border);
+    }
+    .stat-item {}
+    .stat-num {
+      font-family: var(--font-heading);
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--clr-accent);
+    }
+    .stat-label {
+      font-size: 0.82rem;
+      color: var(--clr-muted);
+      margin-top: 2px;
+    }
+    /* Секція "Нові надходження" */
+    .section {
+      padding: 60px 0;
+    }
+    .section-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 32px;
+    }
+    .section-header h2 {
+      font-family: var(--font-heading);
+      font-size: 1.5rem;
+      font-weight: 800;
+    }
+    .section-header a {
+      font-size: 0.9rem;
+      color: var(--clr-accent);
+      font-weight: 600;
+    }
+    /* Жанри */
+    .genres-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      padding: 40px 0;
+    }
+    .genre-card {
+      background: var(--clr-surface);
+      border: 1px solid var(--clr-border);
+      border-radius: var(--radius-md);
+      padding: 24px;
+      text-align: center;
+      transition: border-color var(--transition), transform var(--transition);
+    }
+    .genre-card:hover {
+      border-color: var(--clr-accent);
+      transform: translateY(-3px);
+    }
+    .genre-icon { font-size: 2rem; margin-bottom: 10px; }
+    .genre-name {
+      font-family: var(--font-heading);
+      font-size: 0.95rem;
+      font-weight: 700;
+    }
+    .genre-count {
+      font-size: 0.8rem;
+      color: var(--clr-muted);
+      margin-top: 4px;
+    }
+    @media (max-width: 768px) {
+      .genres-grid { grid-template-columns: repeat(2, 1fr); }
+      .hero-stats { gap: 24px; }
+    }
+    @media (max-width: 480px) {
+      .genres-grid { grid-template-columns: repeat(2, 1fr); }
+      .hero { min-height: 480px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header>
+    <div class="container header-inner">
+      <a href="index.html" class="logo">Cine<span>Mix</span></a>
+      <nav id="main-nav">
+        <ul>
+          <li><a href="index.html" class="active">Головна</a></li>
+          <li><a href="catalog.html">Каталог</a></li>
+          <li><a href="about.html">Про нас</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <a href="register.html" class="btn btn-primary">Приєднатись</a>
+      </div>
+      <button class="burger" id="burger" aria-label="Меню">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ===== HERO ===== -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero-content">
+          <span class="hero-badge">🎬 Твій кінопровідник</span>
+          <h1>Знаходь фільми,<br>які <span>варто дивитись</span></h1>
+          <p>Cinemix — каталог із тисячами фільмів та серіалів. Читай відгуки, оцінюй переглянуте та відкривай нове кіно щодня.</p>
+          <div class="hero-actions">
+            <a href="catalog.html" class="btn btn-primary">Переглянути каталог</a>
+            <a href="register.html" class="btn btn-outline">Створити акаунт</a>
+          </div>
+          <div class="hero-stats">
+            <div class="stat-item">
+              <div class="stat-num">6</div>
+              <div class="stat-label">Фільмів у базі</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-num">6+</div>
+              <div class="stat-label">Нових щомісяця</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-num">3</div>
+              <div class="stat-label">Користувачів</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== НОВІ НАДХОДЖЕННЯ ===== -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <h2>Нові надходження</h2>
+          <a href="catalog.html">Всі фільми →</a>
+        </div>
+        <div class="movies-grid">
+
+          <!-- Картка 1 -->
+          <article class="movie-card">
+            <div class="card-poster">
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkp5c7bmT8bctBBi8hAY8R_fw4ArfMgWRlJNa6q7N4JQ&s=10" alt="Постер фільму Дюна 2">
+              <span class="card-genre">Фантастика</span>
+            </div>
+            <div class="card-body">
+              <h3 class="card-title">Дюна: Частина друга</h3>
+              <div class="card-meta">
+                <span class="card-rating">★ 8.8</span>
+                <span>2024</span>
+                <span>166 хв</span>
+              </div>
+            </div>
+            <div class="card-footer">
+              <a href="movie.html">Детальніше</a>
+            </div>
+          </article>
+
+          <!-- Картка 2 -->
+          <article class="movie-card">
+            <div class="card-poster">
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3nXcIbcc9M7UDFbQBgrjXTGqaNSBCofj4051AO_8SZA&s=10" alt="Постер фільму Оппенгеймер">
+              <span class="card-genre">Драма</span>
+            </div>
+            <div class="card-body">
+              <h3 class="card-title">Оппенгеймер</h3>
+              <div class="card-meta">
+                <span class="card-rating">★ 8.9</span>
+                <span>2023</span>
+                <span>180 хв</span>
+              </div>
+            </div>
+            <div class="card-footer">
+              <a href="movie.html">Детальніше</a>
+            </div>
+          </article>
+
+          <!-- Картка 3 -->
+          <article class="movie-card">
+            <div class="card-poster">
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2lpTGwTNKDVk_hkFr415LaAoTzLQO4e3EvPSSg4djBQ&s=10" alt="Постер фільму Бідні-нещасні">
+              <span class="card-genre">Комедія</span>
+            </div>
+            <div class="card-body">
+              <h3 class="card-title">Дедпул</h3>
+              <div class="card-meta">
+                <span class="card-rating">★ 8.0</span>
+                <span>2024</span>
+                <span>128 хв</span>
+              </div>
+            </div>
+            <div class="card-footer">
+              <a href="movie.html">Детальніше</a>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== ЖАНРИ ===== -->
+    <section class="section" style="background:var(--clr-surface);border-top:1px solid var(--clr-border);border-bottom:1px solid var(--clr-border)">
+      <div class="container">
+        <div class="section-header">
+          <h2>Переглянути за жанром</h2>
+        </div>
+        <div class="genres-grid">
+          <a href="catalog.html" class="genre-card">
+            <div class="genre-icon">🚀</div>
+            <div class="genre-name">Фантастика</div>
+            <div class="genre-count">312 фільмів</div>
+          </a>
+          <a href="catalog.html" class="genre-card">
+            <div class="genre-icon">😂</div>
+            <div class="genre-name">Комедія</div>
+            <div class="genre-count">541 фільм</div>
+          </a>
+          <a href="catalog.html" class="genre-card">
+            <div class="genre-icon">😱</div>
+            <div class="genre-name">Жахи</div>
+            <div class="genre-count">228 фільмів</div>
+          </a>
+          <a href="catalog.html" class="genre-card">
+            <div class="genre-icon">🎭</div>
+            <div class="genre-name">Драма</div>
+            <div class="genre-count">874 фільми</div>
+          </a>
+          <a href="catalog.html" class="genre-card">
+            <div class="genre-icon">💥</div>
+            <div class="genre-name">Бойовик</div>
+            <div class="genre-count">435 фільмів</div>
+          </a>
+          <a href="catalog.html" class="genre-card">
+            <div class="genre-icon">🕵️</div>
+            <div class="genre-name">Детектив</div>
+            <div class="genre-count">198 фільмів</div>
+          </a>
+          <a href="catalog.html" class="genre-card">
+            <div class="genre-icon">❤️</div>
+            <div class="genre-name">Мелодрама</div>
+            <div class="genre-count">367 фільмів</div>
+          </a>
+          <a href="catalog.html" class="genre-card">
+            <div class="genre-icon">🎬</div>
+            <div class="genre-name">Анімація</div>
+            <div class="genre-count">156 фільмів</div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <div>
+          <div class="footer-logo">Cine<span>Mix</span></div>
+          <p class="footer-desc">Знаходь фільми, які варто дивитись. Читай відгуки, оцінюй переглянуте та відкривай нове кіно щодня.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Навігація</h4>
+          <ul>
+            <li><a href="index.html">Головна</a></li>
+            <li><a href="catalog.html">Каталог</a></li>
+            <li><a href="about.html">Про нас</a></li>
+            <li><a href="register.html">Реєстрація</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Жанри</h4>
+          <ul>
+            <li><a href="catalog.html">Фантастика</a></li>
+            <li><a href="catalog.html">Драма</a></li>
+            <li><a href="catalog.html">Комедія</a></li>
+            <li><a href="catalog.html">Бойовик</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 Cinemix.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Бургер-меню
+    const burger = document.getElementById('burger');
+    const nav = document.getElementById('main-nav');
+    burger.addEventListener('click', () => nav.classList.toggle('open'));
+  </script>
+
+</body>
+</html>

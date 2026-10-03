@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Про нас — Cinemix</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .about-hero {
+      background: linear-gradient(135deg, #0f0f1a, #1a1a2e);
+      padding: 80px 0;
+      border-bottom: 1px solid var(--clr-border);
+      text-align: center;
+    }
+    .about-hero h1 {
+      font-family: var(--font-heading);
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 800;
+      margin-bottom: 16px;
+    }
+    .about-hero h1 span { color: var(--clr-accent); }
+    .about-hero p {
+      color: var(--clr-muted);
+      max-width: 600px;
+      margin: 0 auto;
+      font-size: 1.05rem;
+      line-height: 1.8;
+    }
+    /* Місія */
+    .mission-section {
+      padding: 60px 0;
+      border-bottom: 1px solid var(--clr-border);
+    }
+    .mission-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+    .mission-text h2 {
+      font-family: var(--font-heading);
+      font-size: 1.8rem;
+      font-weight: 800;
+      margin-bottom: 16px;
+    }
+    .mission-text p {
+      color: var(--clr-muted);
+      line-height: 1.8;
+      margin-bottom: 14px;
+    }
+    .mission-visual {
+      background: var(--clr-surface);
+      border: 1px solid var(--clr-border);
+      border-radius: var(--radius-lg);
+      padding: 40px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    .stat-box {
+      text-align: center;
+      padding: 20px 10px;
+      background: var(--clr-bg);
+      border-radius: var(--radius-md);
+      border: 1px solid var(--clr-border);
+    }
+    .stat-box .num {
+      font-family: var(--font-heading);
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--clr-accent);
+    }
+    .stat-box .lbl {
+      font-size: 0.8rem;
+      color: var(--clr-muted);
+      margin-top: 4px;
+    }
+    /* Команда */
+    .team-section {
+      padding: 60px 0;
+      border-bottom: 1px solid var(--clr-border);
+      background: var(--clr-surface);
+    }
+    .team-section h2 {
+      font-family: var(--font-heading);
+      font-size: 1.8rem;
+      font-weight: 800;
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .team-card {
+      background: var(--clr-bg);
+      border: 1px solid var(--clr-border);
+      border-radius: var(--radius-md);
+      padding: 28px;
+      text-align: center;
+      transition: transform var(--transition);
+    }
+    .team-card:hover { transform: translateY(-4px); }
+    .team-avatar {
+      width: 80px; height: 80px;
+      border-radius: 50%;
+      background: var(--clr-accent);
+      margin: 0 auto 16px;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-heading);
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: #fff;
+    }
+    .team-name {
+      font-family: var(--font-heading);
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .team-role { font-size: 0.82rem; color: var(--clr-accent); margin-bottom: 10px; }
+    .team-desc { font-size: 0.85rem; color: var(--clr-muted); line-height: 1.6; }
+    /* Контакти */
+    .contact-section {
+      padding: 60px 0;
+    }
+    .contact-section h2 {
+      font-family: var(--font-heading);
+      font-size: 1.8rem;
+      font-weight: 800;
+      margin-bottom: 32px;
+    }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .contact-card {
+      background: var(--clr-surface);
+      border: 1px solid var(--clr-border);
+      border-radius: var(--radius-md);
+      padding: 28px;
+    }
+    .contact-icon { font-size: 1.8rem; margin-bottom: 12px; }
+    .contact-card h3 { font-size: 0.95rem; font-weight: 700; margin-bottom: 6px; }
+    .contact-card p,
+    .contact-card a { color: var(--clr-muted); font-size: 0.88rem; text-decoration: none; }
+    .contact-card a:hover { color: var(--clr-accent); }
+    @media (max-width: 768px) {
+      .mission-grid { grid-template-columns: 1fr; }
+      .team-grid { grid-template-columns: 1fr 1fr; }
+      .contact-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 480px) {
+      .team-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container header-inner">
+      <a href="index.html" class="logo">Cine<span>Mix</span></a>
+      <nav id="main-nav">
+        <ul>
+          <li><a href="index.html">Головна</a></li>
+          <li><a href="catalog.html">Каталог</a></li>
+          <li><a href="about.html" class="active">Про нас</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <a href="register.html" class="btn btn-primary">Приєднатись</a>
+      </div>
+      <button class="burger" id="burger" aria-label="Меню"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+
+  <main>
+
+    <section class="about-hero">
+      <div class="container">
+        <h1>Про <span>Cinemix</span></h1>
+        <p>Місце де кожен може знайти фільм.</p>
+      </div>
+    </section>
+
+    <section class="mission-section">
+      <div class="container">
+        <div class="mission-text">
+        <h2>Тема проєкту</h2>
+        <p>Тема — каталог фільмів: вона охоплює всі необхідні елементи сучасного веб-застосунку: список сутностей, деталі, пошук, авторизацію та відгуки.</p>
+        </div>
+      </div>
+    </section>
+
+
+    <section class="contact-section">
+      <div class="container">
+        <h2>Контакти</h2>
+        <div class="contact-grid">
+          <div class="contact-card">
+            <div class="contact-icon">📧</div>
+            <h3>Електронна пошта</h3>
+            <p><a href="----">-----</a></p>
+          </div>
+          <div class="contact-card">
+            <div class="contact-icon">🐙</div>
+            <h3>GitHub репозиторій</h3>
+            <p><a href="#" target="_blank">github.com/filmhub-kpi</a></p>
+          </div>
+          <div class="contact-card">
+            <div class="contact-icon">🏫</div>
+            <h3>Університет</h3>
+            <p>КПІ ім. Ігоря Сікорського, Київ, Україна</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <div>
+          <div class="footer-logo">Film<span>Hub</span></div>
+          <p class="footer-desc">Знаходь фільми, які варто дивитись.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Навігація</h4>
+          <ul>
+            <li><a href="index.html">Головна</a></li>
+            <li><a href="catalog.html">Каталог</a></li>
+            <li><a href="about.html">Про нас</a></li>
+            <li><a href="register.html">Реєстрація</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Проєкт</h4>
+          <ul>
+            <li><a href="#">GitHub</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 Cinemix.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const burger = document.getElementById('burger');
+    const nav = document.getElementById('main-nav');
+    burger.addEventListener('click', () => nav.classList.toggle('open'));
+  </script>
+
+</body>
+</html>

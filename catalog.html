@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Каталог фільмів — Cinemix</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/catalog.css">
+  <style>
+    .search-bar {
+      display: flex;
+      gap: 12px;
+      margin-top: 20px;
+    }
+    .search-bar input {
+      flex: 1;
+      padding: 12px 18px;
+      background: var(--clr-surface);
+      border: 1px solid var(--clr-border);
+      border-radius: var(--radius-sm);
+      color: var(--clr-text);
+      font-size: 0.95rem;
+      font-family: var(--font-main);
+      outline: none;
+      transition: border-color var(--transition);
+    }
+    .search-bar input::placeholder { color: var(--clr-muted); }
+    .search-bar input:focus { border-color: var(--clr-accent); }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container header-inner">
+      <a href="index.html" class="logo">Cine<span>Mix</span></a>
+      <nav id="main-nav">
+        <ul>
+          <li><a href="index.html">Головна</a></li>
+          <li><a href="catalog.html" class="active">Каталог</a></li>
+          <li><a href="about.html">Про нас</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <a href="register.html" class="btn btn-primary">Приєднатись</a>
+      </div>
+      <button class="burger" id="burger" aria-label="Меню">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+
+      <!-- Заголовок каталогу -->
+      <div class="catalog-header">
+        <h1>Каталог фільмів</h1>
+        <p>Знайди свій наступний улюблений фільм серед тисяч варіантів</p>
+        <div class="search-bar">
+          <input type="search" placeholder="Пошук за назвою, режисером, актором..." aria-label="Пошук фільмів">
+          <button class="btn btn-primary">Знайти</button>
+        </div>
+      </div>
+
+      <!-- Фільтри по жанру -->
+      <div class="catalog-filters" role="group" aria-label="Фільтр за жанром">
+        <button class="filter-btn active">Всі</button>
+        <button class="filter-btn">Фантастика</button>
+        <button class="filter-btn">Драма</button>
+        <button class="filter-btn">Комедія</button>
+        <button class="filter-btn">Бойовик</button>
+        <button class="filter-btn">Жахи</button>
+        <button class="filter-btn">Детектив</button>
+        <button class="filter-btn">Анімація</button>
+      </div>
+
+      <!-- Сітка карток (6 фільмів) -->
+      <div class="movies-grid">
+
+        <article class="movie-card">
+          <div class="card-poster">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkp5c7bmT8bctBBi8hAY8R_fw4ArfMgWRlJNa6q7N4JQ&s=10" alt="Постер фільму Дюна 2">
+            <span class="card-genre">Фантастика</span>
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">Дюна: Частина друга</h3>
+            <div class="card-meta">
+              <span class="card-rating">★ 8.8</span>
+              <span>2024</span>
+              <span>166 хв</span>
+            </div>
+          </div>
+          <div class="card-footer"><a href="movie.html">Детальніше</a></div>
+        </article>
+
+        <article class="movie-card">
+          <div class="card-poster">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3nXcIbcc9M7UDFbQBgrjXTGqaNSBCofj4051AO_8SZA&s=10" alt="Постер фільму Оппенгеймер">
+            <span class="card-genre">Драма</span>
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">Оппенгеймер</h3>
+            <div class="card-meta">
+              <span class="card-rating">★ 8.9</span>
+              <span>2023</span>
+              <span>180 хв</span>
+            </div>
+          </div>
+          <div class="card-footer"><a href="movie.html">Детальніше</a></div>
+        </article>
+
+        <article class="movie-card">
+          <div class="card-poster">
+            <img src="https://upload.wikimedia.org/wikipedia/uk/4/49/%D0%94%D0%B5%D0%B4%D0%BF%D1%83%D0%BB_%D1%96_%D0%A0%D0%BE%D1%81%D0%BE%D0%BC%D0%B0%D1%85%D0%B0_%28%D0%BF%D0%BE%D1%81%D1%82%D0%B5%D1%80%29.jpg?utm_source=uk.wikipedia.org&utm_campaign=parser&utm_content=thumbnail_unscaled" alt="Постер фільму Дедпул і Росомаха">
+            <span class="card-genre">Комедія</span>
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">Дедпул і Росомаха</h3>
+            <div class="card-meta">
+              <span class="card-rating">★ 8.0</span>
+              <span>2024</span>
+              <span>128 хв</span>
+            </div>
+          </div>
+          <div class="card-footer"><a href="movie.html">Детальніше</a></div>
+        </article>
+
+        <article class="movie-card">
+          <div class="card-poster">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2lpTGwTNKDVk_hkFr415LaAoTzLQO4e3EvPSSg4djBQ&s=10" alt="Постер фільму Минулі життя">
+            <span class="card-genre">Бойовик</span>
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">Веном</h3>
+            <div class="card-meta">
+              <span class="card-rating">★ 6.3</span>
+              <span>2018</span>
+              <span>112 хв</span>
+            </div>
+          </div>
+          <div class="card-footer"><a href="movie.html">Детальніше</a></div>
+        </article>
+
+        <article class="movie-card">
+          <div class="card-poster">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4fONuSe16jjSYU3hLOrC0gpDekJi5Ayy8TS0KNBL2hg&s=10" alt="Постер фільму Ножі наголо: Прокинься, покійнику">
+            <span class="card-genre">Детектив</span>
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">Ножі наголо: Прокинься, покійнику</h3>
+            <div class="card-meta">
+              <span class="card-rating">★ 9.0</span>
+              <span>2025</span>
+              <span>224 хв</span>
+            </div>
+          </div>
+          <div class="card-footer"><a href="movie.html">Детальніше</a></div>
+        </article>
+
+        <article class="movie-card">
+          <div class="card-poster">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTAEkC-JZSGZb9H1eULo8NDWXUMwS57ABwLeiYni6K4rQ-kGc_drbYL_N8&s=10" alt="Постер фільму Мумія">
+            <span class="card-genre">Жахи</span>
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">Мумія Лі Кроніна</h3>
+            <div class="card-meta">
+              <span class="card-rating">★ 6.2</span>
+              <span>2026</span>
+              <span>133 хв</span>
+            </div>
+          </div>
+          <div class="card-footer"><a href="movie.html">Детальніше</a></div>
+        </article>
+
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <div>
+          <div class="footer-logo">Cine<span>Mix</span></div>
+          <p class="footer-desc">Знаходь фільми, які варто дивитись.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Навігація</h4>
+          <ul>
+            <li><a href="index.html">Головна</a></li>
+            <li><a href="catalog.html">Каталог</a></li>
+            <li><a href="about.html">Про нас</a></li>
+            <li><a href="register.html">Реєстрація</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Жанри</h4>
+          <ul>
+            <li><a href="catalog.html">Фантастика</a></li>
+            <li><a href="catalog.html">Драма</a></li>
+            <li><a href="catalog.html">Комедія</a></li>
+            <li><a href="catalog.html">Бойовик</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 Cinemix.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const burger = document.getElementById('burger');
+    const nav = document.getElementById('main-nav');
+    burger.addEventListener('click', () => nav.classList.toggle('open'));
+
+    // Перемикання фільтрів
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+      });
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Дюна: Частина друга — Cinemix</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* Hero фільму */
+    .movie-hero {
+      background: linear-gradient(to bottom, #16213e, var(--clr-bg));
+      padding: 60px 0 40px;
+      border-bottom: 1px solid var(--clr-border);
+    }
+    .movie-hero-inner {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 48px;
+      align-items: start;
+    }
+    .movie-poster {
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      aspect-ratio: 2/3;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    }
+    .movie-poster img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .movie-info {}
+    .movie-genre-badge {
+      display: inline-block;
+      background: rgba(233,69,96,0.15);
+      border: 1px solid rgba(233,69,96,0.4);
+      color: var(--clr-accent);
+      font-size: 0.78rem;
+      font-weight: 600;
+      padding: 3px 12px;
+      border-radius: 20px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 16px;
+    }
+    .movie-title {
+      font-family: var(--font-heading);
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 8px;
+    }
+    .movie-original {
+      color: var(--clr-muted);
+      font-size: 1rem;
+      margin-bottom: 20px;
+    }
+    .movie-rating-big {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+    .rating-score {
+      font-family: var(--font-heading);
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: var(--clr-accent2);
+    }
+    .rating-stars { font-size: 1.1rem; color: var(--clr-accent2); }
+    .rating-count { color: var(--clr-muted); font-size: 0.88rem; }
+    .movie-meta-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-bottom: 24px;
+    }
+    .meta-item {}
+    .meta-label {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--clr-muted);
+      font-weight: 600;
+      margin-bottom: 3px;
+    }
+    .meta-value {
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+    .movie-description {
+      color: var(--clr-muted);
+      line-height: 1.8;
+      margin-bottom: 28px;
+      font-size: 0.95rem;
+    }
+    .movie-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+    /* Розділи деталей */
+    .details-section {
+      padding: 48px 0;
+      border-bottom: 1px solid var(--clr-border);
+    }
+    .details-section h2 {
+      font-family: var(--font-heading);
+      font-size: 1.3rem;
+      font-weight: 800;
+      margin-bottom: 24px;
+    }
+    /* Акторський склад */
+    .cast-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 16px;
+    }
+    .cast-card {
+      text-align: center;
+    }
+    .cast-photo {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin: 0 auto 8px;
+      border: 2px solid var(--clr-border);
+    }
+    .cast-photo img { width: 100%; height: 100%; object-fit: cover; }
+    .cast-name { font-size: 0.82rem; font-weight: 600; }
+    .cast-role { font-size: 0.75rem; color: var(--clr-muted); margin-top: 2px; }
+    /* Відгуки */
+    .reviews-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .review-card {
+      background: var(--clr-surface);
+      border: 1px solid var(--clr-border);
+      border-radius: var(--radius-md);
+      padding: 20px;
+    }
+    .review-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+    .review-avatar {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      background: var(--clr-accent);
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 700; font-size: 1rem; color: #fff;
+      flex-shrink: 0;
+    }
+    .review-name { font-weight: 600; font-size: 0.9rem; }
+    .review-date { font-size: 0.78rem; color: var(--clr-muted); }
+    .review-stars { color: var(--clr-accent2); font-size: 0.85rem; margin-left: auto; }
+    .review-text { color: var(--clr-muted); font-size: 0.9rem; line-height: 1.7; }
+    /* Адаптив */
+    @media (max-width: 768px) {
+      .movie-hero-inner { grid-template-columns: 1fr; }
+      .movie-poster { max-width: 200px; }
+      .cast-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+    @media (max-width: 480px) {
+      .cast-grid { grid-template-columns: repeat(2, 1fr); }
+      .movie-meta-list { gap: 14px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container header-inner">
+      <a href="index.html" class="logo">Cine<span>Mix</span></a>
+      <nav id="main-nav">
+        <ul>
+          <li><a href="index.html">Головна</a></li>
+          <li><a href="catalog.html" class="active">Каталог</a></li>
+          <li><a href="about.html">Про нас</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <a href="register.html" class="btn btn-primary">Приєднатись</a>
+      </div>
+      <button class="burger" id="burger" aria-label="Меню"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- Хлібні крихти -->
+    <div class="container" style="padding-top:20px">
+      <nav aria-label="Breadcrumb" style="font-size:0.85rem;color:var(--clr-muted)">
+        <a href="index.html" style="color:var(--clr-muted)">Головна</a>
+        <span style="margin:0 8px">›</span>
+        <a href="catalog.html" style="color:var(--clr-muted)">Каталог</a>
+        <span style="margin:0 8px">›</span>
+        <span style="color:var(--clr-text)">Дюна: Частина друга</span>
+      </nav>
+    </div>
+
+    <!-- Hero фільму -->
+    <section class="movie-hero">
+      <div class="container">
+        <div class="movie-hero-inner">
+          <div class="movie-poster">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkp5c7bmT8bctBBi8hAY8R_fw4ArfMgWRlJNa6q7N4JQ&s=10" alt="Постер фільму Дюна: Частина друга">
+          </div>
+          <div class="movie-info">
+            <span class="movie-genre-badge">Фантастика</span>
+            <h1 class="movie-title">Дюна: Частина друга</h1>
+            <p class="movie-original">Dune: Part Two (2024)</p>
+            <div class="movie-rating-big">
+              <span class="rating-score">8.8</span>
+              <div>
+                <div class="rating-stars">★★★★★</div>
+                <div class="rating-count">14 230 оцінок</div>
+              </div>
+            </div>
+            <div class="movie-meta-list">
+              <div class="meta-item">
+                <div class="meta-label">Рік</div>
+                <div class="meta-value">2024</div>
+              </div>
+              <div class="meta-item">
+                <div class="meta-label">Тривалість</div>
+                <div class="meta-value">2 год 46 хв</div>
+              </div>
+              <div class="meta-item">
+                <div class="meta-label">Країна</div>
+                <div class="meta-value">США</div>
+              </div>
+              <div class="meta-item">
+                <div class="meta-label">Режисер</div>
+                <div class="meta-value">Дені Вільньов</div>
+              </div>
+              <div class="meta-item">
+                <div class="meta-label">Мова</div>
+                <div class="meta-value">Українська</div>
+              </div>
+            </div>
+            <p class="movie-description">
+              Пол Атрейдес об'єднується з Чані та фременами, розпочинаючи шлях помсти проти змовників, які знищили його родину. Стикаючись із вибором між любов'ю та долею Всесвіту, він намагається запобігти жахливому майбутньому, яке бачить лише він.
+            </p>
+            <div class="movie-actions">
+              <button class="btn btn-primary">+ До списку</button>
+              <button class="btn btn-outline">Написати відгук</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Акторський склад -->
+    <section class="details-section">
+      <div class="container">
+        <h2>Акторський склад</h2>
+        <div class="cast-grid">
+          <div class="cast-card">
+            <div class="cast-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSUEPeFkVhUCjK33wHiF0VwZH9GEbpoPh-gBPb6rf-_sCrkXo2H-Om5ooIXDxjEhp-OWZGPywumlKeRvCXhRjycaM7VmQiJbPFPA-kxCw&s=10" alt="Тімоті Шаламе"></div>
+            <div class="cast-name">Тімоті Шаламе</div>
+            <div class="cast-role">Пол Атрейдес</div>
+          </div>
+          <div class="cast-card">
+            <div class="cast-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdX8VNuyQT-oTj7UGl5q9EaT5sVNowUHTiuBZSddI9Cw1NUvevbKuIgKIycCvJ1-pNg-jN8c9sc0jkJV4RoBWCvAWPYyeyPo_llqMa1CTO&s=10" alt="Зендея"></div>
+            <div class="cast-name">Зендея</div>
+            <div class="cast-role">Чані</div>
+          </div>
+          <div class="cast-card">
+            <div class="cast-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqpCyhWOTdB7d_PsJ7ENb9-E7omvXnxfbyKiEXrGKTytIYo9GuUJuBaeRLJRlCv_lrbpXtubUxPZgtAOufR0R357Z5oJtriOgChKbrWL1PIw&s=10" alt="Остін Батлер"></div>
+            <div class="cast-name">Остін Батлер</div>
+            <div class="cast-role">Федд-Рота</div>
+          </div>
+          <div class="cast-card">
+            <div class="cast-photo"><img src="https://encrypted-tbn0.gstatic.com/licensed-image?q=tbn:ANd9GcTWXOvPKhoYQ9-yoJyCQxdUZSer88ubVNS0GHHYgfsCr_S4nGZLre_UM9gyRwTRqwwsyZB9zu8fxemsK5xUa3KF4JG7MkXjhdSOcLSzXBhRlhwj6L1_zP2t4vt3pHOj-OZZPhC01Ea0f_tk&s=19" alt="Флоренс П'ю"></div>
+            <div class="cast-name">Флоренс П'ю</div>
+            <div class="cast-role">Принцеса Іруллан</div>
+          </div>
+          <div class="cast-card">
+            <div class="cast-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-rRQ_MFD2KxT53uIS22ok2lc721yKnNi9ueFycNFoTxErXtlTJUBChvOor7ZffDL--bZkNCSE4UA-fl_HUjEq9qL0I09tKjb43RhIQyG37A&s=10" alt="Джош Бролін"></div>
+            <div class="cast-name">Джош Бролін</div>
+            <div class="cast-role">Гурні Халлек</div>
+          </div>
+          <div class="cast-card">
+            <div class="cast-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQk33tN8jylWwfKzNFISb1MaRfrfSPAL6IfpWXoLjsUpQ&s=10" alt="Хавьер Бардем"></div>
+            <div class="cast-name">Хавьер Бардем</div>
+            <div class="cast-role">Стілгар</div>
+          </div>
+          <div class="cast-card">
+            <div class="cast-photo"><img src="https://filmua.org/uploads/posts/2026-09/person-15830.jpg" alt="Джош Бролін"></div>
+            <div class="cast-name">Джузі Мерлі</div>
+            <div class="cast-role">Преподобна матерь Рамалло</div>
+          </div>
+          <div class="cast-card">
+            <div class="cast-photo"><img src="https://filmua.org/uploads/posts/2026-03/5955843de8_2.webp" alt="Крістофер Вокен"></div>
+            <div class="cast-name">Крістофер Вокен</div>
+            <div class="cast-role">Імператор Шаддам IV</div>
+          </div>
+          <div class="cast-card">
+            <div class="cast-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3aLLAvPyV-WUSMr23dGxO2DsOy8OhYDyM1sQ0h9gL2NPzN3ys8GKz6m3UdNSJOct80kJC7F7NqzDmmeaQojWQJ52vQ-V0zejQlKWMqnOR&s=10" alt="Бабс Олусанмокун"></div>
+            <div class="cast-name">Бабс Олусанмокун</div>
+            <div class="cast-role">Джаміс</div>
+          </div>
+          <div class="cast-card">
+            <div class="cast-photo"><img src="https://filmua.org/uploads/posts/2026-09/person-19456.jpg" alt="Леа Сейду"></div>
+            <div class="cast-name">Леа Сейду</div>
+            <div class="cast-role">Леді Марго Феринг</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Відгуки -->
+    <section class="details-section">
+      <div class="container">
+        <h2>Відгуки глядачів</h2>
+        <div class="reviews-list">
+          <article class="review-card">
+            <div class="review-header">
+              <div class="review-avatar">А</div>
+              <div>
+                <div class="review-name">shredder</div>
+                <div class="review-date">12 березня 2024</div>
+              </div>
+              <div class="review-stars">★★★★★ 10/10</div>
+            </div>
+            <p class="review-text">абсолют сінема. чую, часто переглядатиму</p>
+          </article>
+          <article class="review-card">
+            <div class="review-header">
+              <div class="review-avatar" style="background:var(--clr-accent2)">М</div>
+              <div>
+                <div class="review-name">Alex</div>
+                <div class="review-date">5 квітня 2024</div>
+              </div>
+              <div class="review-stars">★★★★☆ 8/10</div>
+            </div>
+            <p class="review-text">Щоб зрозуміти цю дилогію Потрібно прочитати книгу ДЮНА !!! Фільм передбачає продовження ... це чиста комерція ... У книзі є чітке закінчення і "добрий кінець" ... Пораду для ПРАВИЛЬНОГО перегляду !!! (після прочитання оригіналу) 8/10 балів!</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <div>
+          <div class="footer-logo">Cine<span>Mix</span></div>
+          <p class="footer-desc">Знаходь фільми, які варто дивитись.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Навігація</h4>
+          <ul>
+            <li><a href="index.html">Головна</a></li>
+            <li><a href="catalog.html">Каталог</a></li>
+            <li><a href="about.html">Про нас</a></li>
+            <li><a href="register.html">Реєстрація</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Жанри</h4>
+          <ul>
+            <li><a href="catalog.html">Фантастика</a></li>
+            <li><a href="catalog.html">Драма</a></li>
+            <li><a href="catalog.html">Комедія</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 Cinemix.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const burger = document.getElementById('burger');
+    const nav = document.getElementById('main-nav');
+    burger.addEventListener('click', () => nav.classList.toggle('open'));
+  </script>
+
+</body>
+</html>

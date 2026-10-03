@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Реєстрація — Cinemix</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/forms.css">
+</head>
+<body>
+
+  <header>
+    <div class="container header-inner">
+      <a href="index.html" class="logo">Cine<span>Mix</span></a>
+      <nav id="main-nav">
+        <ul>
+          <li><a href="index.html">Головна</a></li>
+          <li><a href="catalog.html">Каталог</a></li>
+          <li><a href="about.html">Про нас</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <a href="register.html" class="btn btn-primary">Приєднатись</a>
+      </div>
+      <button class="burger" id="burger" aria-label="Меню"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+
+  <main class="form-page">
+    <div class="container">
+      <div class="form-card">
+        <h1>Створити акаунт</h1>
+        <p class="form-subtitle">Приєднуйся до спільноти кінолюбів</p>
+
+        <!--
+          Форма з HTML5-валідацією:
+          - required       → поле обов'язкове
+          - type="email"   → перевіряє формат email
+          - minlength      → мінімальна довжина
+          - pattern        → регулярний вираз (тут для нікнейму)
+        -->
+        <form id="register-form" novalidate>
+
+          <!-- Ім'я -->
+          <div class="form-group">
+            <label for="name">Ім'я</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              placeholder="Введіть своє ім'я"
+              required
+              minlength="2"
+              maxlength="50"
+              autocomplete="given-name"
+            >
+            <span class="form-hint">Від 2 до 50 символів</span>
+          </div>
+
+          <!-- Нікнейм -->
+          <div class="form-group">
+            <label for="username">Нікнейм</label>
+            <input
+              type="text"
+              id="username"
+              name="username"
+              placeholder="user_name_123"
+              required
+              minlength="3"
+              maxlength="20"
+              pattern="^[a-zA-Z0-9_]+$"
+              autocomplete="username"
+            >
+            <span class="form-hint">3–20 символів, лише латиниця, цифри та _</span>
+          </div>
+
+          <!-- Email -->
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="your@email.com"
+              required
+              autocomplete="email"
+            >
+          </div>
+
+          <!-- Пароль -->
+          <div class="form-group">
+            <label for="password">Пароль</label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              placeholder="Мінімум 8 символів"
+              required
+              minlength="8"
+              autocomplete="new-password"
+            >
+            <span class="form-hint">Не менше 8 символів</span>
+          </div>
+
+          <!-- Підтвердження паролю -->
+          <div class="form-group">
+            <label for="confirm">Підтвердити пароль</label>
+            <input
+              type="password"
+              id="confirm"
+              name="confirm"
+              placeholder="Повторіть пароль"
+              required
+              minlength="8"
+              autocomplete="new-password"
+            >
+            <span id="confirm-error" style="font-size:0.78rem;color:var(--clr-accent);display:none">Паролі не збігаються</span>
+          </div>
+
+          <!-- Улюблений жанр -->
+          <div class="form-group">
+            <label for="genre">Улюблений жанр</label>
+            <select id="genre" name="genre" required>
+              <option value="" disabled selected>Оберіть жанр</option>
+              <option value="action">Бойовик</option>
+              <option value="comedy">Комедія</option>
+              <option value="drama">Драма</option>
+              <option value="horror">Жахи</option>
+              <option value="scifi">Фантастика</option>
+              <option value="thriller">Трилер</option>
+              <option value="animation">Анімація</option>
+            </select>
+          </div>
+
+          <!-- Погодження з правилами -->
+          <div class="form-check">
+            <input type="checkbox" id="terms" name="terms" required>
+            <label for="terms">
+              Я погоджуюсь з <a href="#">Умовами використання</a> та <a href="#">Політикою конфіденційності</a>
+            </label>
+          </div>
+
+          <!-- Кнопка -->
+          <button type="submit" class="btn btn-primary form-submit">Зареєструватись</button>
+
+        </form>
+
+        <div class="form-divider">або</div>
+
+        <p class="form-footer-note">
+          Вже є акаунт? <a href="#">Увійти</a>
+        </p>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <div>
+          <div class="footer-logo">Cine<span>Mix</span></div>
+          <p class="footer-desc">Знаходь фільми, які варто дивитись.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Навігація</h4>
+          <ul>
+            <li><a href="index.html">Головна</a></li>
+            <li><a href="catalog.html">Каталог</a></li>
+            <li><a href="about.html">Про нас</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Проєкт</h4>
+          <ul>
+            <li><a href="#">GitHub</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 Cinemix.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const burger = document.getElementById('burger');
+    const nav = document.getElementById('main-nav');
+    burger.addEventListener('click', () => nav.classList.toggle('open'));
+
+    // Перевірка збігу паролів
+    const form = document.getElementById('register-form');
+    const pwd = document.getElementById('password');
+    const confirm = document.getElementById('confirm');
+    const confirmError = document.getElementById('confirm-error');
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      if (pwd.value !== confirm.value) {
+        confirmError.style.display = 'block';
+        confirm.focus();
+        return;
+      }
+      confirmError.style.display = 'none';
+      if (form.checkValidity()) {
+        alert('Реєстрацію успішно завершено! (демо)');
+      } else {
+        form.reportValidity();
+      }
+    });
+
+    confirm.addEventListener('input', () => {
+      if (pwd.value === confirm.value) {
+        confirmError.style.display = 'none';
+      }
+    });
+  </script>
+
+</body>
+</html>

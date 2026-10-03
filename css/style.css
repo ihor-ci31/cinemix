@@ -1,0 +1,298 @@
+/* =============================================
+   FilmHub — головний файл стилів
+   style.css
+   ============================================= */
+
+/* --- CSS-змінні (кольорова палітра) --- */
+:root {
+  --clr-bg:        #0f0f1a;   /* фон сторінки */
+  --clr-surface:   #1a1a2e;   /* фон карток, хедера */
+  --clr-accent:    #e94560;   /* акцентний колір (червоний) */
+  --clr-accent2:   #f5a623;   /* другий акцент (золотий, рейтинг) */
+  --clr-text:      #e8e8f0;   /* основний текст */
+  --clr-muted:     #8888aa;   /* другорядний текст */
+  --clr-border:    #2a2a40;   /* лінії/рамки */
+
+  --font-main:     'Inter', sans-serif;
+  --font-heading:  'Montserrat', sans-serif;
+
+  --radius-sm:     6px;
+  --radius-md:     12px;
+  --radius-lg:     20px;
+
+  --transition:    0.25s ease;
+}
+
+/* --- Скидання та базові правила --- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-main);
+  background-color: var(--clr-bg);
+  color: var(--clr-text);
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+/* --- Утиліти --- */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 10px 24px;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-main);
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  transition: opacity var(--transition);
+}
+
+.btn:hover {
+  opacity: 0.85;
+}
+
+.btn-primary {
+  background-color: var(--clr-accent);
+  color: #fff;
+}
+
+.btn-outline {
+  background: transparent;
+  border: 2px solid var(--clr-accent);
+  color: var(--clr-accent);
+}
+
+/* --- Зірки рейтингу --- */
+.stars {
+  color: var(--clr-accent2);
+  font-size: 0.9rem;
+  letter-spacing: 2px;
+}
+
+/* =============================================
+   HEADER / НАВІГАЦІЯ
+   ============================================= */
+header {
+  background-color: var(--clr-surface);
+  border-bottom: 1px solid var(--clr-border);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+}
+
+.logo {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--clr-text);
+  letter-spacing: 1px;
+}
+
+.logo span {
+  color: var(--clr-accent);
+}
+
+nav ul {
+  display: flex;
+  gap: 32px;
+}
+
+nav a {
+  font-size: 0.95rem;
+  color: var(--clr-muted);
+  transition: color var(--transition);
+  font-weight: 500;
+}
+
+nav a:hover,
+nav a.active {
+  color: var(--clr-accent);
+}
+
+.header-actions {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+/* Бургер (тільки мобіль) */
+.burger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 4px;
+}
+
+.burger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--clr-text);
+  border-radius: 2px;
+  transition: var(--transition);
+}
+
+/* =============================================
+   FOOTER
+   ============================================= */
+footer {
+  background-color: var(--clr-surface);
+  border-top: 1px solid var(--clr-border);
+  margin-top: auto;
+}
+
+.footer-inner {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 40px;
+  padding: 40px 0 24px;
+}
+
+.footer-logo {
+  font-family: var(--font-heading);
+  font-size: 1.3rem;
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+
+.footer-logo span {
+  color: var(--clr-accent);
+}
+
+.footer-desc {
+  color: var(--clr-muted);
+  font-size: 0.9rem;
+  line-height: 1.7;
+}
+
+.footer-col h4 {
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--clr-muted);
+  margin-bottom: 14px;
+}
+
+.footer-col ul {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.footer-col a {
+  color: var(--clr-muted);
+  font-size: 0.9rem;
+  transition: color var(--transition);
+}
+
+.footer-col a:hover {
+  color: var(--clr-accent);
+}
+
+.footer-bottom {
+  border-top: 1px solid var(--clr-border);
+  padding: 16px 0;
+  text-align: center;
+  color: var(--clr-muted);
+  font-size: 0.85rem;
+}
+
+/* =============================================
+   АДАПТИВНІСТЬ (Responsive)
+   ============================================= */
+
+/* --- Брейкпоінт 1: Планшет (≤ 768px) --- */
+@media (max-width: 768px) {
+  nav {
+    display: none;
+    position: absolute;
+    top: 64px;
+    left: 0;
+    width: 100%;
+    background: var(--clr-surface);
+    border-bottom: 1px solid var(--clr-border);
+    padding: 16px 20px;
+  }
+
+  nav.open {
+    display: block;
+  }
+
+  nav ul {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  nav a {
+    font-size: 1rem;
+  }
+
+  .burger {
+    display: flex;
+  }
+
+  .header-actions .btn {
+    display: none;
+  }
+
+  .footer-inner {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .footer-inner > :first-child {
+    grid-column: 1 / -1;
+  }
+}
+
+/* --- Брейкпоінт 2: Мобіль (≤ 480px) --- */
+@media (max-width: 480px) {
+  .footer-inner {
+    grid-template-columns: 1fr;
+  }
+
+  .logo {
+    font-size: 1.2rem;
+  }
+}
