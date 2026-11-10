@@ -10,6 +10,8 @@ fs.mkdirSync(path.dirname(file), { recursive: true });
 const db = new DatabaseSync(file);
 db.exec('PRAGMA foreign_keys = ON;');
 db.exec('PRAGMA journal_mode = WAL;');
+// Вбудовані LOWER/LIKE в SQLite не знають кирилиці — додаємо власну функцію для пошуку
+db.function('ulower', { deterministic: true }, (s) => (s == null ? null : String(s).toLowerCase()));
 
 // Виконати функцію в транзакції
 function transaction(fn) {
