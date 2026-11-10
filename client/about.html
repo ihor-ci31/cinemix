@@ -7,6 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="css/style.css">
   <style>
     .about-hero {
@@ -175,7 +176,7 @@
       <div class="header-actions">
         <a href="register.html" class="btn btn-primary">Приєднатись</a>
       </div>
-      <button class="burger" id="burger" aria-label="Меню"><span></span><span></span><span></span></button>
+      <button class="burger" id="burger" aria-label="Меню" aria-expanded="false" aria-controls="main-nav"><span></span><span></span><span></span></button>
     </div>
   </header>
 
@@ -252,11 +253,9 @@
     </div>
   </footer>
 
-  <script>
-    const burger = document.getElementById('burger');
-    const nav = document.getElementById('main-nav');
-    burger.addEventListener('click', () => nav.classList.toggle('open'));
-  </script>
+  <script src="js/api.js"></script>
+  <script src="js/layout.js"></script>
 
 </body>
+
 </html>

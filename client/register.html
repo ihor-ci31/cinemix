@@ -7,6 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/forms.css">
 </head>
@@ -25,7 +26,7 @@
       <div class="header-actions">
         <a href="register.html" class="btn btn-primary">Приєднатись</a>
       </div>
-      <button class="burger" id="burger" aria-label="Меню"><span></span><span></span><span></span></button>
+      <button class="burger" id="burger" aria-label="Меню" aria-expanded="false" aria-controls="main-nav"><span></span><span></span><span></span></button>
     </div>
   </header>
 
@@ -42,6 +43,7 @@
           - minlength      → мінімальна довжина
           - pattern        → регулярний вираз (тут для нікнейму)
         -->
+        <div class="form-message" id="register-message" hidden></div>
         <form id="register-form" novalidate>
 
           <!-- Ім'я -->
@@ -151,7 +153,7 @@
         <div class="form-divider">або</div>
 
         <p class="form-footer-note">
-          Вже є акаунт? <a href="#">Увійти</a>
+          Вже є акаунт? <a href="login.html">Увійти</a>
         </p>
       </div>
     </div>
@@ -175,7 +177,7 @@
         <div class="footer-col">
           <h2>Проєкт</h2>
           <ul>
-            <li><a href="#">GitHub</a></li>
+            <li><a href="https://github.com/ihor-ci31/cinemix">GitHub</a></li>
           </ul>
         </div>
       </div>
@@ -185,38 +187,10 @@
     </div>
   </footer>
 
-  <script>
-    const burger = document.getElementById('burger');
-    const nav = document.getElementById('main-nav');
-    burger.addEventListener('click', () => nav.classList.toggle('open'));
-
-    // Перевірка збігу паролів
-    const form = document.getElementById('register-form');
-    const pwd = document.getElementById('password');
-    const confirm = document.getElementById('confirm');
-    const confirmError = document.getElementById('confirm-error');
-
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      if (pwd.value !== confirm.value) {
-        confirmError.style.display = 'block';
-        confirm.focus();
-        return;
-      }
-      confirmError.style.display = 'none';
-      if (form.checkValidity()) {
-        alert('Реєстрацію успішно завершено! (демо)');
-      } else {
-        form.reportValidity();
-      }
-    });
-
-    confirm.addEventListener('input', () => {
-      if (pwd.value === confirm.value) {
-        confirmError.style.display = 'none';
-      }
-    });
-  </script>
+  <script src="js/api.js"></script>
+  <script src="js/layout.js"></script>
+  <script src="js/register.js"></script>
 
 </body>
+
 </html>

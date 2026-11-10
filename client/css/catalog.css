@@ -176,3 +176,40 @@
     font-size: 1.5rem;
   }
 }
+
+/* --- ЛР2: панель сортування, лічильники жанрів --- */
+.catalog-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 16px;
+  color: var(--clr-muted);
+  font-size: 0.9rem;
+}
+
+.sort-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sort-label select {
+  padding: 8px 12px;
+  background: var(--clr-surface);
+  color: var(--clr-text);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-main);
+  font-size: 0.9rem;
+}
+
+.filter-btn small {
+  opacity: 0.7;
+  margin-left: 4px;
+}
+
+.filter-btn {
+  min-height: 40px;
+}

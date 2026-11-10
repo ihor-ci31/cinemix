@@ -3,11 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Дюна: Частина друга — Cinemix</title>
+  <title>Фільм — Cinemix</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/forms.css">
   <style>
     /* Hero фільму */
     .movie-hero {
@@ -186,7 +188,7 @@
       <div class="header-actions">
         <a href="register.html" class="btn btn-primary">Приєднатись</a>
       </div>
-      <button class="burger" id="burger" aria-label="Меню"><span></span><span></span><span></span></button>
+      <button class="burger" id="burger" aria-label="Меню" aria-expanded="false" aria-controls="main-nav"><span></span><span></span><span></span></button>
     </div>
   </header>
 
@@ -194,156 +196,34 @@
 
     <!-- Хлібні крихти -->
     <div class="container" style="padding-top:20px">
-      <nav aria-label="Breadcrumb" style="font-size:0.85rem;color:var(--clr-muted)">
-        <a href="index.html" style="color:var(--clr-muted)">Головна</a>
-        <span style="margin:0 8px">›</span>
-        <a href="catalog.html" style="color:var(--clr-muted)">Каталог</a>
-        <span style="margin:0 8px">›</span>
-        <span style="color:var(--clr-text)">Дюна: Частина друга</span>
+      <nav aria-label="Breadcrumb" class="breadcrumbs">
+        <a href="index.html">Головна</a>
+        <span aria-hidden="true">›</span>
+        <a href="catalog.html">Каталог</a>
+        <span aria-hidden="true">›</span>
+        <span id="crumb-title" aria-current="page">Фільм</span>
       </nav>
     </div>
 
-    <!-- Hero фільму -->
+    <!-- Hero фільму (дані з GET /api/movies/:id) -->
     <section class="movie-hero">
-      <div class="container">
-        <div class="movie-hero-inner">
-          <div class="movie-poster">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkp5c7bmT8bctBBi8hAY8R_fw4ArfMgWRlJNa6q7N4JQ&s=10" alt="Постер фільму Дюна: Частина друга">
-          </div>
-          <div class="movie-info">
-            <span class="movie-genre-badge">Фантастика</span>
-            <h1 class="movie-title">Дюна: Частина друга</h1>
-            <p class="movie-original">Dune: Part Two (2024)</p>
-            <div class="movie-rating-big">
-              <span class="rating-score">8.8</span>
-              <div>
-                <div class="rating-stars">★★★★★</div>
-                <div class="rating-count">14 230 оцінок</div>
-              </div>
-            </div>
-            <div class="movie-meta-list">
-              <div class="meta-item">
-                <div class="meta-label">Рік</div>
-                <div class="meta-value">2024</div>
-              </div>
-              <div class="meta-item">
-                <div class="meta-label">Тривалість</div>
-                <div class="meta-value">2 год 46 хв</div>
-              </div>
-              <div class="meta-item">
-                <div class="meta-label">Країна</div>
-                <div class="meta-value">США</div>
-              </div>
-              <div class="meta-item">
-                <div class="meta-label">Режисер</div>
-                <div class="meta-value">Дені Вільньов</div>
-              </div>
-              <div class="meta-item">
-                <div class="meta-label">Мова</div>
-                <div class="meta-value">Українська</div>
-              </div>
-            </div>
-            <p class="movie-description">
-              Пол Атрейдес об'єднується з Чані та фременами, розпочинаючи шлях помсти проти змовників, які знищили його родину. Стикаючись із вибором між любов'ю та долею Всесвіту, він намагається запобігти жахливому майбутньому, яке бачить лише він.
-            </p>
-            <div class="movie-actions">
-              <button class="btn btn-primary">+ До списку</button>
-              <button class="btn btn-outline">Написати відгук</button>
-            </div>
-          </div>
-        </div>
-      </div>
+      <div class="container" id="movie-root" aria-live="polite"></div>
     </section>
 
     <!-- Акторський склад -->
-    <section class="details-section">
+    <section class="details-section" id="cast-section" hidden>
       <div class="container">
         <h2>Акторський склад</h2>
-        <div class="cast-grid">
-          <div class="cast-card">
-            <div class="cast-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSUEPeFkVhUCjK33wHiF0VwZH9GEbpoPh-gBPb6rf-_sCrkXo2H-Om5ooIXDxjEhp-OWZGPywumlKeRvCXhRjycaM7VmQiJbPFPA-kxCw&s=10" alt="Тімоті Шаламе"></div>
-            <div class="cast-name">Тімоті Шаламе</div>
-            <div class="cast-role">Пол Атрейдес</div>
-          </div>
-          <div class="cast-card">
-            <div class="cast-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdX8VNuyQT-oTj7UGl5q9EaT5sVNowUHTiuBZSddI9Cw1NUvevbKuIgKIycCvJ1-pNg-jN8c9sc0jkJV4RoBWCvAWPYyeyPo_llqMa1CTO&s=10" alt="Зендея"></div>
-            <div class="cast-name">Зендея</div>
-            <div class="cast-role">Чані</div>
-          </div>
-          <div class="cast-card">
-            <div class="cast-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqpCyhWOTdB7d_PsJ7ENb9-E7omvXnxfbyKiEXrGKTytIYo9GuUJuBaeRLJRlCv_lrbpXtubUxPZgtAOufR0R357Z5oJtriOgChKbrWL1PIw&s=10" alt="Остін Батлер"></div>
-            <div class="cast-name">Остін Батлер</div>
-            <div class="cast-role">Федд-Рота</div>
-          </div>
-          <div class="cast-card">
-            <div class="cast-photo"><img src="https://encrypted-tbn0.gstatic.com/licensed-image?q=tbn:ANd9GcTWXOvPKhoYQ9-yoJyCQxdUZSer88ubVNS0GHHYgfsCr_S4nGZLre_UM9gyRwTRqwwsyZB9zu8fxemsK5xUa3KF4JG7MkXjhdSOcLSzXBhRlhwj6L1_zP2t4vt3pHOj-OZZPhC01Ea0f_tk&s=19" alt="Флоренс П'ю"></div>
-            <div class="cast-name">Флоренс П'ю</div>
-            <div class="cast-role">Принцеса Іруллан</div>
-          </div>
-          <div class="cast-card">
-            <div class="cast-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-rRQ_MFD2KxT53uIS22ok2lc721yKnNi9ueFycNFoTxErXtlTJUBChvOor7ZffDL--bZkNCSE4UA-fl_HUjEq9qL0I09tKjb43RhIQyG37A&s=10" alt="Джош Бролін"></div>
-            <div class="cast-name">Джош Бролін</div>
-            <div class="cast-role">Гурні Халлек</div>
-          </div>
-          <div class="cast-card">
-            <div class="cast-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQk33tN8jylWwfKzNFISb1MaRfrfSPAL6IfpWXoLjsUpQ&s=10" alt="Хавьер Бардем"></div>
-            <div class="cast-name">Хавьер Бардем</div>
-            <div class="cast-role">Стілгар</div>
-          </div>
-          <div class="cast-card">
-            <div class="cast-photo"><img src="https://filmua.org/uploads/posts/2026-09/person-15830.jpg" alt="Джош Бролін"></div>
-            <div class="cast-name">Джузі Мерлі</div>
-            <div class="cast-role">Преподобна матерь Рамалло</div>
-          </div>
-          <div class="cast-card">
-            <div class="cast-photo"><img src="https://filmua.org/uploads/posts/2026-03/5955843de8_2.webp" alt="Крістофер Вокен"></div>
-            <div class="cast-name">Крістофер Вокен</div>
-            <div class="cast-role">Імператор Шаддам IV</div>
-          </div>
-          <div class="cast-card">
-            <div class="cast-photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3aLLAvPyV-WUSMr23dGxO2DsOy8OhYDyM1sQ0h9gL2NPzN3ys8GKz6m3UdNSJOct80kJC7F7NqzDmmeaQojWQJ52vQ-V0zejQlKWMqnOR&s=10" alt="Бабс Олусанмокун"></div>
-            <div class="cast-name">Бабс Олусанмокун</div>
-            <div class="cast-role">Джаміс</div>
-          </div>
-          <div class="cast-card">
-            <div class="cast-photo"><img src="https://filmua.org/uploads/posts/2026-09/person-19456.jpg" alt="Леа Сейду"></div>
-            <div class="cast-name">Леа Сейду</div>
-            <div class="cast-role">Леді Марго Феринг</div>
-          </div>
-        </div>
+        <div class="cast-grid" id="cast-grid"></div>
       </div>
     </section>
 
-    <!-- Відгуки -->
-    <section class="details-section">
+    <!-- Відгуки (GET/POST /api/movies/:id/reviews, PATCH/DELETE /api/reviews/:id) -->
+    <section class="details-section" id="reviews-section" hidden>
       <div class="container">
         <h2>Відгуки глядачів</h2>
-        <div class="reviews-list">
-          <article class="review-card">
-            <h3 class="visually-hidden">абсолют сінема. чую, часто переглядатиму</h3>
-            <div class="review-header">
-              <div class="review-avatar">А</div>
-              <div>
-                <div class="review-name">shredder</div>
-                <div class="review-date">12 березня 2024</div>
-              </div>
-              <div class="review-stars">★★★★★ 10/10</div>
-            </div>
-            <p class="review-text">абсолют сінема. чую, часто переглядатиму</p>
-          </article>
-          <article class="review-card">
-            <h3 class="visually-hidden">Щоб зрозуміти цю дилогію Потрібно прочитати книгу ДЮНА !!! Фільм передбачає продовження ... це чиста комерція ... У книзі є чітке закінчення і "добрий кінець" ... Пораду для ПРАВИЛЬНОГО перегляду !!! (після прочитання оригіналу) 8/10 балів!</h3>
-            <div class="review-header">
-              <div class="review-avatar" style="background:var(--clr-accent2)">М</div>
-              <div>
-                <div class="review-name">Alex</div>
-                <div class="review-date">5 квітня 2024</div>
-              </div>
-              <div class="review-stars">★★★★☆ 8/10</div>
-            </div>
-            <p class="review-text">Щоб зрозуміти цю дилогію Потрібно прочитати книгу ДЮНА !!! Фільм передбачає продовження ... це чиста комерція ... У книзі є чітке закінчення і "добрий кінець" ... Пораду для ПРАВИЛЬНОГО перегляду !!! (після прочитання оригіналу) 8/10 балів!</p>
-          </article>
-        </div>
+        <div id="review-form-box"></div>
+        <div class="reviews-list" id="reviews-list" aria-live="polite"></div>
       </div>
     </section>
 
@@ -368,9 +248,9 @@
         <div class="footer-col">
           <h4>Жанри</h4>
           <ul>
-            <li><a href="catalog.html">Фантастика</a></li>
-            <li><a href="catalog.html">Драма</a></li>
-            <li><a href="catalog.html">Комедія</a></li>
+            <li><a href="catalog.html?genre=scifi">Фантастика</a></li>
+            <li><a href="catalog.html?genre=drama">Драма</a></li>
+            <li><a href="catalog.html?genre=comedy">Комедія</a></li>
           </ul>
         </div>
       </div>
@@ -380,11 +260,10 @@
     </div>
   </footer>
 
-  <script>
-    const burger = document.getElementById('burger');
-    const nav = document.getElementById('main-nav');
-    burger.addEventListener('click', () => nav.classList.toggle('open'));
-  </script>
+  <script src="js/api.js"></script>
+  <script src="js/layout.js"></script>
+  <script src="js/movie.js"></script>
 
 </body>
+
 </html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Вхід — Cinemix</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/forms.css">
+</head>
+<body>
+
+  <header>
+    <div class="container header-inner">
+      <a href="index.html" class="logo">Cine<span>Mix</span></a>
+      <nav id="main-nav">
+        <ul>
+          <li><a href="index.html">Головна</a></li>
+          <li><a href="catalog.html">Каталог</a></li>
+          <li><a href="about.html">Про нас</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <a href="register.html" class="btn btn-primary">Приєднатись</a>
+      </div>
+      <button class="burger" id="burger" aria-label="Меню" aria-expanded="false" aria-controls="main-nav"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+
+  <main class="form-page">
+    <div class="container">
+      <div class="form-card">
+        <h1>Вхід</h1>
+        <p class="form-subtitle">Раді бачити знову</p>
+
+        <div class="form-message" id="login-message" hidden></div>
+        <form id="login-form" novalidate>
+          <div class="form-group">
+            <label for="login">Email або нікнейм</label>
+            <input type="text" id="login" name="login" placeholder="your@email.com" required maxlength="254" autocomplete="username">
+          </div>
+          <div class="form-group">
+            <label for="password">Пароль</label>
+            <input type="password" id="password" name="password" placeholder="Ваш пароль" required maxlength="72" autocomplete="current-password">
+          </div>
+          <button type="submit" class="btn btn-primary form-submit">Увійти</button>
+        </form>
+
+        <div class="form-divider">або</div>
+
+        <p class="form-footer-note">
+          Ще немає акаунта? <a href="register.html">Зареєструватись</a>
+        </p>
+      </div>
+    </div>
+  </main>
+
+
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <div>
+          <div class="footer-logo">Cine<span>Mix</span></div>
+          <p class="footer-desc">Знаходь фільми, які варто дивитись.</p>
+        </div>
+        <div class="footer-col">
+          <h2>Навігація</h2>
+          <ul>
+            <li><a href="index.html">Головна</a></li>
+            <li><a href="catalog.html">Каталог</a></li>
+            <li><a href="about.html">Про нас</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h2>Проєкт</h2>
+          <ul>
+            <li><a href="https://github.com/ihor-ci31/cinemix">GitHub</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 Cinemix.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/api.js"></script>
+  <script src="js/layout.js"></script>
+  <script src="js/login.js"></script>
+
+</body>
+
+</html>
