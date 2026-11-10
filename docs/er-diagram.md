@@ -1,5 +1,9 @@
 # ER-діаграма бази даних Cinemix
 
+![ER-діаграма](er-diagram.png)
+
+Та сама схема у форматі Mermaid (GitHub малює її автоматично):
+
 ```mermaid
 erDiagram
     GENRES ||--o{ MOVIES : "має"
